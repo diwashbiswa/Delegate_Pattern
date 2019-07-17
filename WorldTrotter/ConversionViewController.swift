@@ -26,7 +26,10 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
         let replacementTextHasDecimalSeparator = string.range(of: ".")
         
-        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
+        let letters = NSCharacterSet.letters
+        let range = textField.text?.rangeOfCharacter(from: letters)
+        
+        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil && range != nil {
             return false
         } else {
             return true
@@ -38,7 +41,25 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         celsiusLabel.text = "?"
         celsiusLabel.textColor = UIColor(red: 0.90, green: 0.60, blue: 0.40, alpha: 1)
         
+        let letters = NSCharacterSet.letters
+        let range = textField.text?.rangeOfCharacter(from: letters)
+        
+        if range != nil {
+            //celsiusLabel.text = "Letter found!"
+            //textField(textField("Denied", shouldChangeCharactersIn: range, replacementString: "Blah"))
+        }
     }
+    
+//    func textField2(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let letters = NSCharacterSet.letters
+//        let range = textField.text?.rangeOfCharacter(from: letters)
+//
+//        if range != nil {
+//            return false
+//        } else {
+//            return true
+//        }
+//    }
     
     // DELEGATE METHOD : textFieldDidBeginEditing - is called when the user selects the text field
     // TODO: Add and modify the method to build expectation for the output by changing the celsiusLabel when the input field is selected
