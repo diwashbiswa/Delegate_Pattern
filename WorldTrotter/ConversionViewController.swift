@@ -4,7 +4,7 @@
 
 import UIKit
     // TODO: Mark the ViewController as conforming to the UITextFieldDelegate Protocol
-class ConversionViewController: UIViewController{ //, UITextFieldDelegate {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var celsiusLabel: UILabel!
     @IBOutlet var textField: UITextField!
@@ -32,6 +32,14 @@ class ConversionViewController: UIViewController{ //, UITextFieldDelegate {
             return true
         }
     }
+    
+    //the attributes changes when the user begins editing the text field
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        celsiusLabel.text = "?"
+        celsiusLabel.textColor = UIColor(red: 0.90, green: 0.60, blue: 0.40, alpha: 1)
+        
+    }
+    
     // DELEGATE METHOD : textFieldDidBeginEditing - is called when the user selects the text field
     // TODO: Add and modify the method to build expectation for the output by changing the celsiusLabel when the input field is selected
     // modify the celsiusLabel text to be a single question mark
